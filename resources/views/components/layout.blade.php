@@ -9,6 +9,7 @@
 </head>
 <body>
       <x-navbar></x-navbar>
+      <x-header>{{ $title }}</x-header>
       <main>
         {{ $slot }}
       </main>
