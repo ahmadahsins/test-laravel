@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,7 +11,15 @@ Route::get('/', function () {
 
 Route::get('/blog', function () {
     return view('blog', [
-        'title' => 'Blog'
+        'title' => 'Blog',
+        'posts' => Post::all()
+    ]);
+});
+
+Route::get('/post/{post:slug}', function (Post $post) {
+    return view('post', [
+        'title' => 'Single Post',
+        'post' => $post
     ]);
 });
 
