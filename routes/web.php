@@ -1,31 +1,17 @@
 <?php
 
-use App\Models\Post;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home', [
-        'title' => 'Home'
-    ]);
-});
+// Home Routes
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/blog', function () {
-    return view('blog', [
-        'title' => 'Blog',
-        'posts' => Post::all()
-    ]);
-});
+// Blog Routes
+Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/post/{post:slug}', [BlogController::class, 'show']);
 
-Route::get('/post/{post:slug}', function (Post $post) {
-    return view('post', [
-        'title' => 'Single Post',
-        'post' => $post
-    ]);
-});
-
-Route::get('/contact', function () {
-    return view('contact', [
-        'title' => 'Contact'
-    ]);
-});
+// Contact Route
+Route::get('/contact', [ContactController::class, 'index']);
 
