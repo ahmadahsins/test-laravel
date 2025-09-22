@@ -16,20 +16,22 @@ class PostForm
             ->components([
                 TextInput::make('title')
                     ->required()
-                    ->columnSpan('full')
-                    ->reactive()
-                    ->afterStateUpdated(function (string $state, callable $set) {
-                        $set('slug', Str::slug(str($state)));
-                    }),
+                    ->reactive() 
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        $set('slug', Str::slug($state));
+                    })
+                    ->columnSpan('full'),
+
                 Select::make('author_id')
                     ->relationship('author', 'name')
                     ->required()
                     ->columnSpan('full'),
+
                 TextInput::make('slug')
                     ->required()
-                    ->columnSpan('full')
-                    ->reactive()
-                    ,
+                    ->reactive() 
+                    ->columnSpan('full'),
+
                 Textarea::make('body')
                     ->required()
                     ->columnSpan('full')

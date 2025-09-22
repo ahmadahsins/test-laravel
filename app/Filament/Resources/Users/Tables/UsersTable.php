@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Posts\Tables;
+namespace App\Filament\Resources\Users\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -8,26 +8,16 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class PostsTable
+class UsersTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('title')
-                    ->searchable()
-                    ->limit(30)      // truncate teks panjang (30 karakter)
-                    ->width('200px'), // atur lebar kolom
-
-                TextColumn::make('slug')
-                    ->searchable()
-                    ->limit(40)
-                    ->width('250px'),
-
-                TextColumn::make('body')
-                    ->searchable()
-                    ->limit(50)
-                    ->width('300px'),
+                TextColumn::make('name')
+                    ->searchable(),
+                TextColumn::make('email')
+                    ->searchable(),
             ])
             ->filters([
                 //
